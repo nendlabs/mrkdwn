@@ -1,0 +1,10 @@
+name = "mrkdwn"
+main = "src/index.ts"
+compatibility_date = "2026-02-14"
+
+routes = [
+  { pattern = "mrkdwn.nendlabs.com", zone_name = "nendlabs.com", custom_domain = true }
+]
+
+[observability]
+enabled = true
