@@ -1,40 +1,34 @@
-export const SAMPLE_MARKDOWN = `# How a Screen Works
+export const SAMPLE_MARKDOWN = `# mrkdwn
 
-Most software is made from tiny pictures shown very quickly.
+A focused markdown renderer for long-form writing on the web.
 
-When text appears on a page, your screen is not "drawing letters." It is lighting up millions of little squares called pixels. Every frame, your browser decides what each pixel should look like.
+Paste markdown into the editor drawer at the bottom, hit **Render**, and read in a clean paper-style layout.
 
-## Why This Matters
+## Start Here
 
-Engineers often talk at the API level and forget the physical output. But if you are building interfaces, the physical output is the product:
+- Use headings to structure your draft.
+- Keep paragraphs short and purposeful.
+- Use code fences for technical notes.
 
-- spacing changes readability
-- contrast controls fatigue
-- typography changes pace
+## What It Supports
 
-## A Useful Mental Model
+- headings, lists, links, quotes, and code blocks
+- automatic table of contents from section headings
+- light/dark mode based on your system theme
 
-Think in three layers:
+### API Quick Start
 
-1. content and intent
-2. structure and semantics
-3. visual composition over time
-
-Each layer can improve without rewriting the others.
-
-> Good interfaces feel inevitable, even when they are highly intentional.
-
-\`\`\`ts
-const article = render(markdown);
-const page = composeLayout(article);
-return respond(page);
+\`\`\`bash
+curl -X POST https://mrkdwn.nendlabs.com/ \
+  -H "content-type: text/plain" \
+  --data-binary $'# Hello\\n\\nRendered from curl.'
 \`\`\`
 
-### Small Wins
+## Why This Exists
 
-Pick one visual constraint and hold it steady for a week. Example: fixed line length and stronger heading rhythm.
+Most markdown previews are either too plain or too product-heavy.
 
-The design starts to cohere faster than expected.
+mrkdwn aims for a middle ground: simple input, strong typography, and a reading experience that feels deliberate.
 `;
 
 export interface TocItem {
@@ -49,6 +43,7 @@ export function renderPage(markdown: string, contentHtml: string, tocItems: TocI
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://nendlabs.com/favicon.ico" />
     <title>mrkdwn</title>
     <style>
       :root {
